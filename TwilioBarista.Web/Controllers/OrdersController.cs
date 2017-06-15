@@ -113,7 +113,7 @@ namespace TwilioBarista.Web.Controllers
                     DrinkTypeRepository.SelectAll()
                         .AsQueryable()
                         .Include(m => m.Drink)
-                        .Where(m => m.Name == message.Body);
+                        .Where(m => m.Name.Trim() == message.Body.Trim());
                 var drinkMatch = drink.Select(p => p.Drink.Name).FirstOrDefault();
                 string response;
                 if (drink.Any())
